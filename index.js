@@ -6,6 +6,7 @@ var ejsLayouts = require('express-ejs-layouts');
 var db = require('./models');
 var methods = require('methods');
 var flash = require('connect-flash');
+var request = require('request');
 var session = require('express-session');
 var passport = require('passport');
 var isloggedin = require('./middleware/isloggedin');
@@ -41,9 +42,24 @@ app.use(function(req, res, next) {
 app.get("/", function(req, res) {
     res.render('home');
 });
+
+
 app.get("/recipes", function(req, res) {
-    res.render('recipes');
+    var qs = {
+        s: 'star wars'
+    };
+    request({
+        url: 'http://omdbapi.com',
+        qs: qs
+    }, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            var dataObj = JSON.parse(body);
+            res.send(dataObj.Search);
+
+        }
+    });
 });
+
 app.get("/addRecipes", function(req, res) {
     res.render('addRecipes');
 });
@@ -57,4 +73,4 @@ app.use('/auth', require('./controllers/auth'));
 
 
 //Set Listen
-app.listen(3000);
+app.listen(process.env.PORT || 3000);

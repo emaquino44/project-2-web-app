@@ -2,7 +2,7 @@
 <html>
     <head>
 
-        <title>Hello!</title>
+        <title>Mabuhay!</title>
         <!-- Latest compiled and minified CSS & JS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -15,10 +15,12 @@
     	<%- body %>
     	<hr>
     	<a href="/" class="btn btn-default">HOME</a>
+      <a href="/recipes" class="btn btn-default">Recipes</a>
+      <a href="/addRecipes" class="btn btn-default">Add a Recipe</a>
     	<a href="/profile" class="btn btn-default">Profile</a>
         <% if(!currentUser) { %>
     	<a href="/auth/login" class="btn btn-default">Login</a>
-      <a href="/auth/signup" class="btn btn-default">Sign UP!</a>
+      <a href="/auth/signup" class="btn btn-default">Sign Up</a>
       <% } else { %>
       <a href="/auth/logout" class="btn btn-danger">logout, <%= currentUser.getFullName() %></a>
       <% } %>

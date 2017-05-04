@@ -1,5 +1,5 @@
 var express = require('express');
-var passport = require('passport');
+var passport = require('../config/passportConfig');
 var LocalStrategy = require('passport-local').Strategy;
 var db = require('../models');
 var router = express.Router();
@@ -62,6 +62,16 @@ router.get('/logout', function(req, res) {
     res.redirect('/');
 
 });
+
+router.get('/recipes', function(req, res) {
+    res.render('recipes');
+});
+
+router.get('/addRecipes', function(req, res) {
+    res.render('addRecipes');
+});
+
+//POST - Add new receipes
 
 
 //Export

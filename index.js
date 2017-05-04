@@ -3,6 +3,7 @@ require('dotenv').config();
 var express = require('express');
 var bodyParser = require('body-parser');
 var ejsLayouts = require('express-ejs-layouts');
+var db = require('./models');
 var methods = require('methods');
 var flash = require('connect-flash');
 var session = require('express-session');
@@ -40,7 +41,12 @@ app.use(function(req, res, next) {
 app.get("/", function(req, res) {
     res.render('home');
 });
-
+app.get("/recipes", function(req, res) {
+    res.render('recipes');
+});
+app.get("/addRecipes", function(req, res) {
+    res.render('addRecipes');
+});
 
 app.get("/profile", isloggedin, function(req, res) {
     res.render('profile');

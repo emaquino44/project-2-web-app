@@ -85,7 +85,7 @@ router.post('/addRecipes', function(req, res) {
             directions: req.body.directions
         })
         .then(function(newRecipe) {
-            res.redirect('/show');
+            res.render('show', { newRecipe: newRecipe });
         })
         .catch(function(error) {
             res.status(404).render('main/404');

@@ -1,6 +1,7 @@
 var express = require('express');
 var passport = require('../config/passportConfig');
-var LocalStrategy = require('passport-local').Strategy;
+// var LocalStrategy = require('passport-local').Strategy;
+
 var db = require('../models');
 var router = express.Router();
 
@@ -67,11 +68,29 @@ router.get('/recipes', function(req, res) {
     res.render('recipes');
 });
 
+
+//GET - User is requesting a form to add a new recipe
+
 router.get('/addRecipes', function(req, res) {
     res.render('addRecipes');
 });
 
-//POST - Add new receipes
+
+//POST - User will Add new recipe
+
+router.post('/addRecipes', function(req, res) {
+    db.newRecipe.create({
+            name: req.body.name,
+            ingredients: req.body.ingredients,
+            directions: req.body.directions
+        })
+        .then(function(newRecipe) {
+            res.redirect('/show');
+        })
+        .catch(function(error) {
+            res.status(404).render('main/404');
+        });
+});
 
 
 //Export

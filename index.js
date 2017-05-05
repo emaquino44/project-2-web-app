@@ -46,15 +46,18 @@ app.get("/", function(req, res) {
 
 app.get("/recipes", function(req, res) {
     var qs = {
-        s: 'star wars'
+        app_id: process.env.APP_ID,
+        app_key: process.env.APP_KEY,
+        q: 'filipino'
     };
     request({
-        url: 'http://omdbapi.com',
+        url: 'https://api.edamam.com/search',
         qs: qs
     }, function(error, response, body) {
         if (!error && response.statusCode == 200) {
             var dataObj = JSON.parse(body);
-            res.send(dataObj.Search);
+            res.render("recipes", { recipes: dataObj.hits });
+            // res.send(dataObj.hits);
 
         }
     });

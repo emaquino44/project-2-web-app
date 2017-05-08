@@ -92,6 +92,17 @@ router.post('/addRecipes', function(req, res) {
         });
 });
 
+//DELETE - User can delete a recipe
+router.delete('/:name', function(req, res) {
+    var name = req.params.name;
+
+    db.newRecipe.destroy({
+        where: { name: name }
+    }).then(function() {
+        res.status(204).redirect('/home');
+    });
+});
+
 
 //Export
 module.exports = router;

@@ -74,6 +74,18 @@ app.get("/profile", isloggedin, function(req, res) {
     res.render('profile');
 });
 
+app.delete("/show/:name", function(req, res) {
+    var recipeToDelete = req.params.name;
+
+    // delete team here
+
+    /*
+     * instead of rendering a page, send back JSON or text, which can be read
+     * in the .done() promise of the AJAX call
+     */
+    res.send({ message: 'success' });
+});
+
 //controllers
 app.use('/auth', require('./controllers/auth'));
 

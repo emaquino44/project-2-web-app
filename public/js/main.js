@@ -1,5 +1,5 @@
     $(document).ready(function() {
-        $('.carousel').carousel('duration');
+        $('.carousel').carousel('next');
     });
 
     $('.delete-link').on('click', function(e) {

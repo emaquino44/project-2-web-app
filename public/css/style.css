@@ -3,3 +3,7 @@ body {
     background-size: cover;
     background-repeat: none;
 }
+
+img {
+    border-radius: 25px
+}

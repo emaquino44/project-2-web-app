@@ -74,16 +74,15 @@ app.get("/profile", isloggedin, function(req, res) {
     res.render('profile');
 });
 
-app.delete("/show/:name", function(req, res) {
-    var recipeToDelete = req.params.name;
+app.delete('/addRecipe/:name', function(req, res) {
+    var nameOfTheRecipe = req.params.name;
 
-    // delete team here
-
-    /*
-     * instead of rendering a page, send back JSON or text, which can be read
-     * in the .done() promise of the AJAX call
-     */
-    res.send({ message: 'success' });
+    db.newRecipe.destroy({
+        where: { name: nameOfTheRecipe }
+    }).then(function() {
+        res.status(204).redirect('/home'); // http://stackoverflow.com/a/17093684
+        res.send({ message: 'success' });
+    });
 });
 
 //controllers

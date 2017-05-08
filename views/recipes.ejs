@@ -11,15 +11,16 @@
 
     </head>
     <body>
-
+<div class="row allrecipes">
 <h1>Filipino Recipes</h1>
 <% recipes.forEach(function(recipe) { %>
-<div class="container">
+<div class="individ col m4 s12">
 <img src="<%= recipe.recipe.image %>">
-<p><%= recipe.recipe.label %></p>
-
+<p class="blue-text text-darken-4 "><%= recipe.recipe.label %></p>
+<p class="recipelink">Click Here for Recipe<br><a href="#" class="blue-text text-darken-4 "><%= recipe.recipe.source %></a></p>
 </div>
 <% }); %>
+</div>
 
         <script src="js/main.js"></script>
     </body>

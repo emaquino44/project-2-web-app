@@ -1,3 +1,5 @@
 .container {
-    background-image: url('/images/PI-Flag.png');
+    background-image: url('images/pineapple-supply-co-138081.jpg');
+    background-size: cover;
+    background-repeat: none;
 }

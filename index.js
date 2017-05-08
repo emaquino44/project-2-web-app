@@ -50,7 +50,8 @@ app.get("/recipes", function(req, res) {
         app_key: process.env.APP_KEY,
         q: 'filipino',
         from: 0,
-        to: 50
+        to: 50,
+
     };
     request({
         url: 'https://api.edamam.com/search',

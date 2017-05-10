@@ -43,6 +43,11 @@ app.get("/", function(req, res) {
     res.render('home');
 });
 
+// app.get("/show", function(req, res) {
+//     res.render('show');
+// });
+
+
 
 app.get("/recipes", function(req, res) {
     var qs = {
